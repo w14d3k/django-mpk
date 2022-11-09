@@ -1,0 +1,34 @@
+<input type="checkbox" id="login-modal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <label for="login-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="font-bold text-lg">Logowanie</h3>
+    <div class="card-body">
+      <form action="POST">
+        <!-- LOGIN FORM -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="text" placeholder="email" class="input input-bordered" id="logEmail" name="logEmail"/>
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Hasło</span>
+          </label>
+          <input type="text" placeholder="hasło" class="input input-bordered" id="logPass" name="logPass"/>
+          <label class="label cursor-pointer">
+            <span class="label-text">Zapamiętaj mnie</span>
+            <input type="checkbox" class="toggle" id="logRemember" name="logRemember"/>
+          </label>
+          <label class="label">
+            <a href="#" class="label-text-alt link link-hover">Nie pamiętam hasła.</a>
+          </label>
+        </div>
+        <div class="form-control mt-6">
+          <button class="btn btn-primary">Zaloguj się</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

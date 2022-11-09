@@ -1,35 +1,136 @@
-{% extends 'main.html' %}
-{% block content %}
-<div class="content relative flex place-content-center	">
-    <div class="avatar">
-        <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          <img src="https://placeimg.com/192/192/people" />
+{% extends 'main.html' %} {% block content %}
+<div class="wrapper">
+  <div class="wrapper-bg flex bg-base-200 py-10">
+    <div class="bg-base-200 rounded-box col-span-3 row-span-3 mx-2 grid w-72 flex-1 place-items-center items-center gap-4 p-4 py-24 shadow-xl xl:mx-0 xl:w-full svelte-1n6ue57">
+      <div class="dropdown">
+        <div tabindex="0">
+          <div class="online avatar">
+            <div class="mask mask-squircle bg-base-content h-24 w-24 bg-opacity-10 p-px">
+              <img src="https://placeimg.com/80/80/people" width="94" height="94" class="mask mask-squircle"/>
+            </div>
+          </div>
         </div>
       </div>
-  </div>
-</div>
-  <div class="content relative flex place-content-center	">
-  <h1>Imię Nazwisko</h1>
-</div>
-<div class="content relative flex place-content-center	">
-  <div class="stats bg-primary text-primary-content">
-    <div class="stat">
-      <div class="stat-title">Bilans konta</div>
-      <div class="stat-value">PLN 42.69</div>
-      <div class="stat-actions">
-        <button class="btn btn-sm btn-success">Doładuj</button>
+      <div>
+        <div class="dropdown w-full">
+          <div tabindex="0">
+            <div class="text-center">
+              <div class="text-3xl font-extrabold">Imię Nazwisko</div>
+              <div class="text-base-content/70 my-3 text-xl">Użytkownik</div>
+              <div class="text-base-content/70 my-3 text-xl">Email: user1@gmail.com</div>
+              <div class="text-base-content/70 my-3 text-xl">PESEL: 01234567891</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown dropdown-top">
+        <div tabindex="0">
+            <button class="btn btn-accent btn-lg">Edytuj dane</button>
+        </div>
       </div>
     </div>
-    
-    <div class="stat">
-      <div class="stat-title">Zakupione bilety:</div>
-      <div class="stat-value">2</div>
-      <div class="stat-actions">
-        <button class="btn btn-sm">Zobacz listę</button> 
-        <button class="btn btn-sm">Sklep</button>
+
+<!-- TICKETS DIV -->
+
+  <div class="tickets-wrapper flex flex-col flex-1">
+
+  <!-- TICKET ICON -->
+
+    <div class="bg-accent text-accent-content rounded-box flex flex-1 items-center p-4 shadow-xl">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+      x="0px" y="0px" viewBox="0 0 512 512" class="inline-block h-10 w-10 stroke-current" 
+      style="enable-background:new 0 0 512 512; fill:#575c00; transform: rotate(90deg);" xml:space="preserve">
+      <g><g><g><path  d="M492.408,210.307C503.325,209.97,512,201.023,512,190.101v-77.338c0-11.164-9.051-20.216-20.216-20.216H20.216
+      C9.051,92.548,0,101.599,0,112.763v77.287c0,11.164,9.051,20.216,20.216,20.216c25.218,0,45.734,20.516,45.734,45.734
+      s-20.516,45.734-45.734,45.734C9.051,301.734,0,310.786,0,321.95v77.287c0,11.164,9.051,20.216,20.216,20.216h471.569
+      c11.164,0,20.216-9.051,20.216-20.216v-77.338c0-10.922-8.675-19.869-19.592-20.206c-24.836-0.767-44.29-20.837-44.29-45.693
+      S467.573,211.074,492.408,210.307z M162.745,379.02H40.431v-39.249c37.792-9.12,65.95-43.218,65.95-83.771
+      c0-40.552-28.158-74.652-65.95-83.772v-39.249h122.314V379.02z M432.049,316.025c10.997,11.315,24.617,19.251,39.521,23.217
+      v39.778H203.176V132.979h268.393v39.778c-14.904,3.966-28.524,11.903-39.521,23.217c-15.709,16.164-24.361,37.482-24.361,60.027
+      C407.686,278.544,416.339,299.861,432.049,316.025z"/><path d="M372.235,198.673H246.198c-11.164,0-20.216,9.051-20.216,20.216s9.051,20.216,20.216,20.216h126.037
+      c11.164,0,20.216-9.051,20.216-20.216S383.399,198.673,372.235,198.673z"/><path d="M372.235,272.895H246.198c-11.164,0-20.216,9.051-20.216,20.216s9.051,20.216,20.216,20.216h126.037
+      c11.164,0,20.216-9.051,20.216-20.216S383.399,272.895,372.235,272.895z"/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+
+<!-- END OF TICKET ICON -->
+
+      <div class="flex-1 px-2">
+        <h2 class="text-3xl font-extrabold">Wszystkie linie | 150 Dni | Okaziciel</h2>
+        <p class="text-lg text-opacity-80">Ważny do: 05.12.2022  15:34</p>
+      </div>
+      <div class="flex-0">
+        <div class="dropdown dropdown-top dropdown-end">
+          <div tabindex="0">
+            <div class="flex space-x-1">
+              <button aria-label="button component" class="btn btn-ghost btn-square">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                
+              </button>
+              <button aria-label="button component" class="btn btn-ghost btn-square" >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    
-  </div>
+<!-- END OF TICKETS DIV -->
+<!-- TICKETS DIV -->
+
+<div class="tickets-wrapper flex flex-col flex-1">
+
+  <!-- TICKET ICON -->
+
+    <div class="bg-accent text-accent-content rounded-box flex flex-1 items-center p-4 shadow-xl">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+      x="0px" y="0px" viewBox="0 0 512 512" class="inline-block h-10 w-10 stroke-current" 
+      style="enable-background:new 0 0 512 512; fill:#575c00; transform: rotate(90deg);" xml:space="preserve">
+      <g><g><g><path  d="M492.408,210.307C503.325,209.97,512,201.023,512,190.101v-77.338c0-11.164-9.051-20.216-20.216-20.216H20.216
+      C9.051,92.548,0,101.599,0,112.763v77.287c0,11.164,9.051,20.216,20.216,20.216c25.218,0,45.734,20.516,45.734,45.734
+      s-20.516,45.734-45.734,45.734C9.051,301.734,0,310.786,0,321.95v77.287c0,11.164,9.051,20.216,20.216,20.216h471.569
+      c11.164,0,20.216-9.051,20.216-20.216v-77.338c0-10.922-8.675-19.869-19.592-20.206c-24.836-0.767-44.29-20.837-44.29-45.693
+      S467.573,211.074,492.408,210.307z M162.745,379.02H40.431v-39.249c37.792-9.12,65.95-43.218,65.95-83.771
+      c0-40.552-28.158-74.652-65.95-83.772v-39.249h122.314V379.02z M432.049,316.025c10.997,11.315,24.617,19.251,39.521,23.217
+      v39.778H203.176V132.979h268.393v39.778c-14.904,3.966-28.524,11.903-39.521,23.217c-15.709,16.164-24.361,37.482-24.361,60.027
+      C407.686,278.544,416.339,299.861,432.049,316.025z"/><path d="M372.235,198.673H246.198c-11.164,0-20.216,9.051-20.216,20.216s9.051,20.216,20.216,20.216h126.037
+      c11.164,0,20.216-9.051,20.216-20.216S383.399,198.673,372.235,198.673z"/><path d="M372.235,272.895H246.198c-11.164,0-20.216,9.051-20.216,20.216s9.051,20.216,20.216,20.216h126.037
+      c11.164,0,20.216-9.051,20.216-20.216S383.399,272.895,372.235,272.895z"/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+
+<!-- END OF TICKET ICON -->
+
+      <div class="flex-1 px-2">
+        <h2 class="text-3xl font-extrabold">Wszystkie linie | 150 Dni | Okaziciel</h2>
+        <p class="text-lg text-opacity-80">Ważny do: 05.12.2022  15:34</p>
+      </div>
+      <div class="flex-0">
+        <div class="dropdown dropdown-top dropdown-end">
+          <div tabindex="0">
+            <div class="flex space-x-1">
+              <button aria-label="button component" class="btn btn-ghost btn-square">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                
+              </button>
+              <button aria-label="button component" class="btn btn-ghost btn-square" >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- END OF TICKETS DIV -->
+
+
+</div>
+</div>
 </div>
 {% endblock content %}

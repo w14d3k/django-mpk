@@ -1,0 +1,87 @@
+<!-- LOGIN MODAL -->
+
+<input type="checkbox" id="login-modal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <label for="login-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="font-bold text-lg">Logowanie</h3>
+    <div class="card-body">
+      <form action="GET">
+        <!-- LOGIN FORM -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="text" placeholder="email" class="input input-bordered" id="logEmail" name="logEmail"/>
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Hasło</span>
+          </label>
+          <input type="text" placeholder="hasło" class="input input-bordered" id="logPass" name="logPass"/>
+          <label class="label cursor-pointer">
+            <span class="label-text">Zapamiętaj mnie</span>
+            <input type="checkbox" class="toggle" id="logRemember" name="logRemember"/>
+          </label>
+          <label class="label">
+            <a href="#" class="label-text-alt link link-hover">Nie pamiętam hasła.</a>
+          </label>
+        </div>
+        <div class="form-control mt-6">
+          <button class="btn btn-primary" type="submit">Zaloguj się</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTER MODAL -->
+
+<input type="checkbox" id="register-modal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <label for="register-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="font-bold text-lg">Rejestracja</h3>
+    <div class="card-body">
+      <form action="GET">
+        <!-- REGISTER FORM -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Imię</span>
+          </label>
+          <input type="text" placeholder="Jan" class="input input-bordered" id="regName" name="regName" />
+          <label class="label">
+            <span class="label-text">Nazwisko</span>
+          </label>
+          <input type="text" placeholder="Kowalczyk" class="input input-bordered" id="regSurName" name="regSurName" />
+          <label class="label">
+            <span class="label-text">PESEL</span>
+          </label>
+          <input type="text" placeholder="01234567891" class="input input-bordered" id="regPesel" name="regPesel" />
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="text" placeholder="email" class="input input-bordered" id="regEmail" name="regEmail" />
+          <label class="label">
+            <span class="label-text">Hasło</span>
+          </label>
+          <input type="text" placeholder="hasło" class="input input-bordered" id="regPass" name="regPass" />
+          <label class="label">
+            <span class="label-text">Powtórz hasło</span>
+          </label>
+          <input type="text" placeholder="powtórz hasło" class="input input-bordered" id="regPass2" name="regPass2" />
+        </div>
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <span class="label-text">Akceptuję <a href="" class="link link-primary">regulamin korzystania z usługi</a>
+              *</span>
+            <input type="checkbox" class="checkbox" id="regRules" name="regRules" />
+          </label>
+        </div>
+        <div class="form-control mt-6">
+          <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

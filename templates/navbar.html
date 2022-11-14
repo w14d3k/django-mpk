@@ -23,9 +23,12 @@
           tabindex="0"
           class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li><a>Sklep</a></li>
           <!-- Видно только юзерам -->
+          {% if user.is_authenticated %}
+          <li><a>Sklep</a></li>
+          {% else %}
           <li><a>Cennik</a></li>
+          {% endif %}
           <li tabindex="0">
             <a class="justify-between">
               Akty prawne
@@ -56,9 +59,12 @@
     <!-- center navbar part for desktops -->
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0">
-        <li><a>Sklep</a></li>
         <!-- Видно только юзерам -->
+        {% if user.is_authenticated %}
+        <li><a>Sklep</a></li>
+        {% else %}
         <li><a>Cennik</a></li>
+        {% endif %}
         <li tabindex="0">
           <a>
             Akty prawne
@@ -110,25 +116,28 @@
         </svg>
       </label>
 
-      <!-- LOG-IN BUTTON -->
-
-      <label class="btn mx-6" for="login-modal">Zaloguj się</label>
-      <!-- Видно только гостям -->
-
       <!-- PROFILE ICON / BAGE   -->
       <!-- Видно только юзерам -->
-
+      {% if user.is_authenticated %}
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
             <img src="https://placeimg.com/80/80/people" />
           </div>
         </label>
-        <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+        <ul
+          tabindex="0"
+          class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+        >
           <li><a href="../profile/">Profil</a></li>
           <li><a>Ustawienia</a></li>
           <li><a>Wyloguj się</a></li>
         </ul>
       </div>
+      {% else %}
+      <!-- LOG-IN BUTTON -->
+      <label class="btn mx-6" for="login-modal">Zaloguj się</label>
+      {% endif %}
     </div>
   </div>
+</body>

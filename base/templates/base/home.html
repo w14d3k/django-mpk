@@ -1,9 +1,17 @@
-{% extends 'main.html' %}
-{% block content %}
+{% extends 'main.html' %} 
+
+{% block content %} 
+
+{% if user.is_authenticated %} 
+
+{% else %}
 <div class="relative">
-  <div class="hero object-cover bg-base-200  ">
+  <div class="hero object-cover bg-base-200">
     <div class="hero-content flex-col lg:flex-row my-24 py-6">
-      <img src="https://placeimg.com/260/400/arch" class="max-w-sm rounded-lg shadow-2xl"/>
+      <img
+        src="https://placeimg.com/260/400/arch"
+        class="max-w-sm rounded-lg shadow-2xl"
+      />
       <div>
         <h1 class="text-5xl font-bold">Witamy w portalu ZTM Lublin!</h1>
         <p class="pt-6 pb-3">
@@ -22,4 +30,5 @@
     </div>
   </div>
 </div>
+{% endif %} 
 {% endblock content %}

@@ -11,5 +11,8 @@ urlpatterns = [
     path('store/', views.store, name="store"),
     path('terms/', views.terms, name="terms"),
     path('gdpr/', views.gdpr, name="gdpr"),
+    path('about_us/', views.about_us, name="about_us"),
+    path('careers/', views.careers, name="careers"),
+    path('media/', views.media, name="media"),
     path('contact/', views.contact, name="contact"),
 ]

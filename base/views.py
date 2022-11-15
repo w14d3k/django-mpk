@@ -53,3 +53,12 @@ def terms(request):
 
 def gdpr(request):
     return render(request, 'base/gdpr.html')
+
+def about_us(request):
+    return render(request, 'base/about_us.html')
+
+def careers(request):
+    return render(request, 'base/careers.html')
+
+def media(request):
+    return render(request, 'base/media.html')

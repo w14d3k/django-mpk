@@ -5,25 +5,23 @@
 {% endblock %}
 
 {% block content %}
-{% comment %} <input type="checkbox" id="login-modal" class="modal-toggle" />
-<div class="modal">
   <div class="modal-box relative">
-    <label for="login-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
     <h3 class="font-bold text-lg">Logowanie</h3>
     <div class="card-body">
-      <form action="POST">
+      <form method="POST">
+        {% csrf_token %}
         <!-- LOGIN FORM -->
         <div class="form-control">
           <label class="label">
             <span class="label-text">Email</span>
           </label>
-          <input type="text" placeholder="email" class="input input-bordered" id="logEmail" name="logEmail"/>
+          {{ form.username }}
         </div>
         <div class="form-control">
           <label class="label">
             <span class="label-text">Hasło</span>
           </label>
-          <input type="text" placeholder="hasło" class="input input-bordered" id="logPass" name="logPass"/>
+          {{ form.password }}
           <label class="label cursor-pointer">
             <span class="label-text">Zapamiętaj mnie</span>
             <input type="checkbox" class="toggle" id="logRemember" name="logRemember"/>
@@ -38,11 +36,4 @@
       </form>
     </div>
   </div>
-</div> {% endcomment %}
-<h1>Logowanie</h1>
-<form method="POST">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button class="btn btn-primary">Zaloguj się</button>
-</form>
 {% endblock %}

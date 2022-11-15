@@ -5,39 +5,37 @@
 {% endblock %}
 
 {% block content %}
-{% comment %} <input type="checkbox" id="register-modal" class="modal-toggle" />
-<div class="modal">
   <div class="modal-box relative">
-    <label for="register-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
     <h3 class="font-bold text-lg">Rejestracja</h3>
     <div class="card-body">
-      <form action="POST">
+      <form method="POST">
+        {% csrf_token %}
         <!-- REGISTER FORM -->
         <div class="form-control">
           <label class="label">
             <span class="label-text">Imię</span>
           </label>
-          <input type="text" placeholder="Jan" class="input input-bordered" id="regName" name="regName" />
+          {{ form.first_name }}
           <label class="label">
             <span class="label-text">Nazwisko</span>
           </label>
-          <input type="text" placeholder="Kowalczyk" class="input input-bordered" id="regSurName" name="regSurName" />
+          {{ form.last_name }}
           <label class="label">
             <span class="label-text">PESEL</span>
           </label>
-          <input type="text" placeholder="01234567891" class="input input-bordered" id="regPesel" name="regPesel" />
+          {{ form.pesel }}
           <label class="label">
             <span class="label-text">Email</span>
           </label>
-          <input type="text" placeholder="email" class="input input-bordered" id="regEmail" name="regEmail" />
+          {{ form.email }}
           <label class="label">
             <span class="label-text">Hasło</span>
           </label>
-          <input type="text" placeholder="hasło" class="input input-bordered" id="regPass" name="regPass" />
+          {{ form.password1 }}
           <label class="label">
             <span class="label-text">Powtórz hasło</span>
           </label>
-          <input type="text" placeholder="powtórz hasło" class="input input-bordered" id="regPass2" name="regPass2" />
+          {{ form.password2 }}
         </div>
         <div class="form-control">
           <label class="label cursor-pointer">
@@ -52,12 +50,4 @@
       </form>
     </div>
   </div>
-</div> {% endcomment %}
-<h1>Rejestracja</h1>
-<form method="POST">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button class="btn btn-primary">Zarejestruj się</button>
-</form>
-
 {% endblock content %}

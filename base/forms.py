@@ -60,12 +60,13 @@ class LoginForm(forms.Form):
 
 class RegisterForm(forms.ModelForm):
    
+    is_terms_accepted = forms.BooleanField()
     password1 = forms.CharField(label='Hasło', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Powtórz hasło', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'pesel')
+        fields = ('first_name', 'last_name', 'email', 'pesel', 'is_terms_accepted',)
 
     def clean_password2(self):
         # Check that the two password entries match

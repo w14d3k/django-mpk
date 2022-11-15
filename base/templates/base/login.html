@@ -1,5 +1,9 @@
 {% extends 'main.html' %} 
 
+{% block title %} 
+  <title>Logowanie</title>
+{% endblock %}
+
 {% block content %}
 {% comment %} <input type="checkbox" id="login-modal" class="modal-toggle" />
 <div class="modal">
@@ -41,4 +45,4 @@
   {{ form.as_p }}
   <button type="submit" class="btn btn-primary">Zaloguj się</button>
 </form>
-{% endblock content %}
+{% endblock %}

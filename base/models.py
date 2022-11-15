@@ -28,16 +28,6 @@ class UserManager(BaseUserManager):
         user_obj.save(using = self._db)
         return user_obj
     
-    def create_basic_user(self, email, password, first_name, last_name, pesel):
-        user = self.create_user(
-            email,
-            password=password,
-            first_name=first_name,
-            last_name=last_name,
-            pesel=pesel
-        )
-        return user
-    
     def create_staffuser(self, email, password, first_name, last_name, pesel):
         user = self.create_user(
             email,

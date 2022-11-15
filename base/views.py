@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, get_user_model, login
+from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.shortcuts import redirect, render
 from django. contrib import messages
 from .forms import LoginForm, RegisterForm, User
@@ -10,12 +10,9 @@ def home(request):
 User = get_user_model()
 
 def register_user(request):
-    if request.method == 'POST':
-         form = RegisterForm(request.POST or None)
-         if form.is_valid():
-             form.save()
-    else:
-        form = RegisterForm()     
+    form = RegisterForm(request.POST or None)
+    if form.is_valid():
+        form.save()  
     return render(request, 'base/register.html', context = {"form" : form})
 
 def login_user(request):
@@ -32,6 +29,10 @@ def login_user(request):
         else:
             print("Error")
     return render(request, "base/login.html", context)
+
+def logout_user(request):
+    logout(request)
+    return redirect('/')
 
 def profile(request):
     return render(request, 'base/profile.html')

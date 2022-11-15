@@ -17,10 +17,10 @@
         <div class="dropdown w-full">
           <div tabindex="0">
             <div class="text-center">
-              <div class="text-3xl font-extrabold">Imię Nazwisko</div>
-              <div class="text-base-content/70 my-3 text-xl">Użytkownik</div>
-              <div class="text-base-content/70 my-3 text-xl">Email: user1@gmail.com</div>
-              <div class="text-base-content/70 my-3 text-xl">PESEL: 01234567891</div>
+              <div class="text-3xl font-extrabold">{{ user.get_first_name }} {{ user.get_last_name }}</div>
+              <div class="text-base-content/70 my-3 text-xl"> {% if user.is_admin %} Administrator {% else %} Użytkownik {% endif %}</div>
+              <div class="text-base-content/70 my-3 text-xl">Email: {{ user.email}}</div>
+              <div class="text-base-content/70 my-3 text-xl">PESEL: {{ user.get_pesel}}</div>
             </div>
           </div>
         </div>

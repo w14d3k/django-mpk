@@ -69,11 +69,14 @@ class User(AbstractBaseUser):
     def __str__(self):
         return self.email
     
-    def get_full_name(self):
-        return self.first_name, self.last_name
-    
-    def get_short_name(self):
+    def get_first_name(self):
         return self.first_name
+    
+    def get_last_name(self):
+        return self.last_name
+    
+    def get_pesel(self):
+        return self.pesel
     
     def has_perm(self, perm, obj=None):
         return True

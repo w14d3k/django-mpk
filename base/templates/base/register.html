@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<input type="checkbox" id="register-modal" class="modal-toggle" />
+{% comment %} <input type="checkbox" id="register-modal" class="modal-toggle" />
 <div class="modal">
   <div class="modal-box relative">
     <label for="register-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
@@ -48,5 +48,12 @@
       </form>
     </div>
   </div>
-</div>
+</div> {% endcomment %}
+<h1>Rejestracja</h1>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+</form>
+
 {% endblock content %}

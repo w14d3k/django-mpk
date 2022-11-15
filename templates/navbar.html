@@ -25,9 +25,9 @@
         >
           <!-- Видно только юзерам -->
           {% if user.is_authenticated %}
-          <li><a>Sklep</a></li>
+          <li><a href="{% url 'store' %}">Sklep</a></li>
           {% else %}
-          <li><a>Cennik</a></li>
+          <li><a href="{% url 'price_list' %}">Cennik</a></li>
           {% endif %}
           <li tabindex="0">
             <a class="justify-between">
@@ -45,11 +45,11 @@
               </svg>
             </a>
             <ul class="p-2 bg-base-100">
-              <li><a>Regulamin korzystania z usługi</a></li>
-              <li><a>RODO, Akty prawne dotyczące danych osobowych</a></li>
+              <li><a href="{% url 'terms' %}">Regulamin korzystania z usługi</a></li>
+              <li><a href="{% url 'gdpr' %}">RODO, Akty prawne dotyczące danych osobowych</a></li>
             </ul>
           </li>
-          <li><a>Kontakt</a></li>
+          <li><a href="{% url 'contact' %}">Kontakt</a></li>
         </ul>
       </div>
       <a class="btn btn-ghost normal-case text-xl" href="../"
@@ -61,9 +61,9 @@
       <ul class="menu menu-horizontal p-0">
         <!-- Видно только юзерам -->
         {% if user.is_authenticated %}
-        <li><a>Sklep</a></li>
+        <li><a href="{% url 'store' %}">Sklep</a></li>
         {% else %}
-        <li><a>Cennik</a></li>
+        <li><a href="{% url 'price_list' %}">Cennik</a></li>
         {% endif %}
         <li tabindex="0">
           <a>
@@ -81,11 +81,11 @@
             </svg>
           </a>
           <ul class="p-2 bg-base-100">
-            <li><a>Regulamin korzystania z usługi</a></li>
-            <li><a>RODO, Akty prawne dotyczące danych osobowych</a></li>
+            <li><a href="{% url 'terms' %}">Regulamin korzystania z usługi</a></li>
+            <li><a href="{% url 'gdpr' %}">RODO, Akty prawne dotyczące danych osobowych</a></li>
           </ul>
         </li>
-        <li><a>Kontakt</a></li>
+        <li><a href="{% url 'contact' %}">Kontakt</a></li>
       </ul>
     </div>
     <!-- (end)right part of navbar -->

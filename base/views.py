@@ -12,7 +12,8 @@ User = get_user_model()
 def register_user(request):
     form = RegisterForm(request.POST or None)
     if form.is_valid():
-        form.save()  
+        form.save()
+        return redirect('/login')  
     return render(request, 'base/register.html', context = {"form" : form})
 
 def login_user(request):
@@ -26,7 +27,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/profile')
+            return redirect('/store')
         else:
             print("Error")
     return render(request, "base/login.html", context)
@@ -37,3 +38,18 @@ def logout_user(request):
 
 def profile(request):
     return render(request, 'base/profile.html')
+
+def price_list(request):
+    return render(request, 'base/price_list.html')
+
+def store(request):
+    return render(request, 'base/store.html')
+
+def contact(request):
+    return render(request, 'base/contact.html')
+
+def terms(request):
+    return render(request, 'base/terms.html')
+
+def gdpr(request):
+    return render(request, 'base/gdpr.html')

@@ -1,8 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from django.contrib.auth import password_validation
 from django.shortcuts import redirect, render
-from .forms import LoginForm, RegisterForm, User
+from .forms import LoginForm, RegisterForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -10,7 +9,6 @@ def home(request):
     return render(request, 'base/home.html')
 
 User = get_user_model()
-
 
 def register_user(request):
     registration_form = RegisterForm(request.POST)

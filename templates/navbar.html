@@ -24,11 +24,8 @@
           class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
         >
           <!-- Видно только юзерам -->
-          {% if user.is_authenticated %}
           <li><a href="{% url 'store' %}">Sklep</a></li>
-          {% else %}
           <li><a href="{% url 'price_list' %}">Cennik</a></li>
-          {% endif %}
           <li tabindex="0">
             <a class="justify-between">
               Akty prawne

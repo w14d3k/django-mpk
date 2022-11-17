@@ -4,13 +4,15 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .forms import UserAdminCreationForm, UserAdminChangeForm
 
+
 User = get_user_model()
+
 
 class UserAdmin(BaseUserAdmin):
     # The forms to add and change user instances
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
-
+    
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
@@ -29,8 +31,11 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2', 'first_name', 'last_name', 'pesel')}
         ),
     )
+    
     search_fields = ('first_name', 'last_name', 'pesel', 'email')
+    
     ordering = ('first_name',)
+    
     filter_horizontal = ()
 
 

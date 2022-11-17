@@ -54,6 +54,7 @@ def admin_dashboard(request):
 def sales_statistics(request):
     return redirect('/admin')
 
+
 @login_required(login_url='/')
 def profile(request):
     return render(request, 'base/profile.html')
@@ -61,6 +62,7 @@ def profile(request):
 
 def price_list(request):
     return render(request, 'base/price_list.html')
+
 
 @login_required(login_url='/')
 def store(request):

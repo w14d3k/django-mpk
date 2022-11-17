@@ -24,7 +24,9 @@
           class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
         >
           <!-- Видно только юзерам -->
+          {% if user.is_authenticated %}
           <li><a href="{% url 'store' %}">Sklep</a></li>
+          {% endif %}
           <li><a href="{% url 'price_list' %}">Cennik</a></li>
           <li tabindex="0">
             <a class="justify-between">
@@ -57,7 +59,9 @@
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0">
         <!-- Видно только юзерам -->
+        {% if user.is_authenticated %}
         <li><a href="{% url 'store' %}">Sklep</a></li>
+        {% endif %}
         <li><a href="{% url 'price_list' %}">Cennik</a></li>
         <li tabindex="0">
           <a>

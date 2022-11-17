@@ -3,6 +3,7 @@ from django.db import models
 
 
 class UserManager(BaseUserManager):
+    
     def create_user(self, email, password, first_name, last_name, pesel, active=True, is_staff=False, is_admin=False):
         if not email:
             raise ValueError("User must have an email address")
@@ -51,12 +52,13 @@ class UserManager(BaseUserManager):
         )
         return user
     
+    
 class User(AbstractBaseUser):
    
-    first_name = models.CharField(max_length=255, blank=True, null=True)
-    last_name = models.CharField(max_length=255, blank=True, null=True)
+    first_name = models.CharField(max_length=255, null=True)
+    last_name = models.CharField(max_length=255, null=True)
     email = models.EmailField(max_length=255, unique=True)
-    pesel = models.CharField(unique=True, max_length=11, blank=True, null=True)
+    pesel = models.CharField(unique=True, max_length=11, null=True)
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)

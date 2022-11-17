@@ -1,5 +1,7 @@
 {% extends 'main.html' %}
 
+{% load widget_tweaks %} 
+
 {% block title %} 
   <title>Rejestracja</title>
 {% endblock %}
@@ -8,40 +10,43 @@
   <div class="modal-box relative">
     <h3 class="font-bold text-lg">Rejestracja</h3>
     <div class="card-body">
-      <form method="POST">
+      <form method="post">
         {% csrf_token %}
-        <!-- REGISTER FORM -->
         <div class="form-control">
           <label class="label">
             <span class="label-text">Imię</span>
           </label>
-          {{ form.first_name }}
+          {% render_field registration_form.first_name class="input input-bordered" placeholder="Jan" %}
           <label class="label">
             <span class="label-text">Nazwisko</span>
           </label>
-          {{ form.last_name }}
+          {% render_field registration_form.last_name class="input input-bordered" placeholder="Kowalczyk" %}
           <label class="label">
             <span class="label-text">PESEL</span>
           </label>
-          {{ form.pesel }}
+          {% render_field registration_form.pesel class="input input-bordered" placeholder="01234567891" %}
+          {{ registration_form.pesel.errors }}
           <label class="label">
             <span class="label-text">Email</span>
           </label>
-          {{ form.email }}
+          {% render_field registration_form.email class="input input-bordered" placeholder="email" %}
+          {{ registration_form.email.errors }}
           <label class="label">
             <span class="label-text">Hasło</span>
           </label>
-          {{ form.password1 }}
+          {% render_field registration_form.password1 class="input input-bordered" placeholder="hasło" %}
+          {{ registration_form.password2.errors }}
           <label class="label">
             <span class="label-text">Powtórz hasło</span>
           </label>
-          {{ form.password2 }}
+          {% render_field registration_form.password2 class="input input-bordered" placeholder="powtórz hasło" %}
+          {{ registration_form.password2.errors }}
         </div>
         <div class="form-control">
           <label class="label cursor-pointer">
             <span class="label-text">Akceptuję <a href="" class="link link-primary">regulamin korzystania z usługi</a>
               *</span>
-              {{ form.is_terms_accepted }}
+              {% render_field registration_form.is_terms_accepted class="toggle" placeholder="powtórz hasło" %}
           </label>
         </div>
         <div class="form-control mt-6">

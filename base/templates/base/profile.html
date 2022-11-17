@@ -22,7 +22,14 @@
           <div tabindex="0">
             <div class="text-center">
               <div class="text-3xl font-extrabold">{{ user.get_first_name }} {{ user.get_last_name }}</div>
-              <div class="text-base-content/70 my-3 text-xl"> {% if user.is_admin %} Administrator {% else %} Użytkownik {% endif %}</div>
+              <div class="text-base-content/70 my-3 text-xl"> 
+                {% if user.is_admin %} 
+                <a role="button" href="{% url 'admin_dashboard' %}" class="btn">Panel administratora</a>
+                <a role="button" href="{% url 'sales_statistics' %}" class="btn">Statystyki sprzedaży</a>
+                {% else %} 
+                Użytkownik 
+                {% endif %}
+              </div>
               <div class="text-base-content/70 my-3 text-xl">Email: {{ user.email}}</div>
               <div class="text-base-content/70 my-3 text-xl">PESEL: {{ user.get_pesel}}</div>
             </div>

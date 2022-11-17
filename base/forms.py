@@ -1,16 +1,19 @@
 from django import forms
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, password_validation
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
+
 
 User = get_user_model()
+
 
 class UserAdminCreationForm(forms.ModelForm):
     # A form for creating new users. Includes all the required fields, plus a repeated password.
     first_name = forms.CharField(label='Imię', widget=forms.TextInput)
     last_name = forms.CharField(label='Nazwisko', widget=forms.TextInput)
     email = forms.EmailField(label='Email')
-    pesel = forms.CharField(label='Pesel', widget=forms.TextInput)
+    pesel = forms.CharField(label='Pesel', widget=forms.TextInput, validators=[RegexValidator(r'^\d\d\d\d\d\d\d\d\d\d\d$')])
     password1 = forms.CharField(label='Hasło', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Powtórz hasło', widget=forms.PasswordInput)
 
@@ -23,7 +26,10 @@ class UserAdminCreationForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
+            raise forms.ValidationError("Hasła są różne")
+        else:
+            password_validation.validate_password(password1)
+            password_validation.validate_password(password2)
         return password2
 
     def save(self, commit=True):
@@ -54,15 +60,21 @@ class UserAdminChangeForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    username = forms.EmailField(label='Email')
+    
+    username = forms.EmailField(label='Email', help_text='Twój email')
     password = forms.CharField(label='Hasło', widget=forms.PasswordInput)
+    is_remembered = forms.BooleanField()
 
 
 class RegisterForm(forms.ModelForm):
-   
-    is_terms_accepted = forms.BooleanField()
-    password1 = forms.CharField(label='Hasło', widget=forms.PasswordInput)
+    
+    first_name = forms.CharField(label='Imię', widget=forms.TextInput)
+    last_name = forms.CharField(label='Nazwisko', widget=forms.TextInput)
+    email = forms.EmailField(label='Email')
+    pesel = forms.CharField(label='Pesel', widget=forms.TextInput, validators=[RegexValidator(r'^\d\d\d\d\d\d\d\d\d\d\d$')])
+    password1 = forms.CharField(label='Hasło', widget=forms.PasswordInput, help_text='Twoje hasło')
     password2 = forms.CharField(label='Powtórz hasło', widget=forms.PasswordInput)
+    is_terms_accepted = forms.BooleanField()
 
     class Meta:
         model = User
@@ -73,7 +85,10 @@ class RegisterForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
+            raise forms.ValidationError("Hasła są różne")
+        else:
+            password_validation.validate_password(password1)
+            password_validation.validate_password(password2)
         return password2
 
     def save(self, commit=True):
@@ -84,3 +99,4 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+    

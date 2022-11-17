@@ -60,11 +60,8 @@
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0">
         <!-- Видно только юзерам -->
-        {% if user.is_authenticated %}
         <li><a href="{% url 'store' %}">Sklep</a></li>
-        {% else %}
         <li><a href="{% url 'price_list' %}">Cennik</a></li>
-        {% endif %}
         <li tabindex="0">
           <a>
             Akty prawne
@@ -115,7 +112,9 @@
           />
         </svg>
       </label>
-
+      {% if not user.is_authenticated %}
+      <a role="button" href="{% url 'login' %}" class="btn">Zaloguj się</a>
+      {% endif %}
       <!-- PROFILE ICON / BAGE   -->
       <!-- Видно только юзерам -->
       {% if user.is_authenticated %}

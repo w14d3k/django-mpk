@@ -7,8 +7,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="modal-box relative">
-  <h3 class="font-bold text-lg">Logowanie</h3>
+<div class="flex justify-center my-20 py-4">
+  <div class="inner flex flex-col w-1/2">
+    <div class="flex justify-center"><h3 class="font-bold text-lg">Logowanie</h3></div>
   <div class="card-body">
     <form method="post">
       {% csrf_token %}
@@ -40,5 +41,6 @@
       </div>
     </form>
   </div>
+</div>
 </div>
 {% endblock %}

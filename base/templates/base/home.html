@@ -4,6 +4,27 @@
 
 {% if user.is_authenticated %} 
 
+<div class="relative">
+  <div class="hero object-cover bg-base-200">
+    <div class="hero-content flex-col lg:flex-row my-24 py-6">
+      <img
+        src="https://placeimg.com/260/400/arch"
+        class="max-w-sm rounded-lg shadow-2xl"
+      />
+      <div>
+        <h1 class="text-5xl font-bold">Witamy, {{ user.get_first_name }} {{ user.get_last_name }}!</h1>
+        <p class="pt-6 pb-3">
+          Jesteś zalogowany, a więc masz dostęp do sklepu oraz profilu.
+        </p>
+        <p class="pt-3 pb-6">
+          Dziękujemy, że jesteś z nami. Zapewniamy, iż każda wspólna podróż zostawi w twojej pamięci wyłącznie pozytywne wspomnienia.
+        </p>
+        <a role="button" href="{% url 'store' %}" class="btn btn-primary">Przejdź do sklepu</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% else %}
 <div class="relative">
   <div class="hero object-cover bg-base-200">

@@ -26,7 +26,7 @@ class UserAdminCreationForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Hasła są różne")
+            raise forms.ValidationError("Wpisane hasła się różnią")
         else:
             password_validation.validate_password(password1)
             password_validation.validate_password(password2)
@@ -85,7 +85,7 @@ class RegisterForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Hasła są różne")
+            raise forms.ValidationError("Wpisane hasła się różnią")
         else:
             password_validation.validate_password(password1)
             password_validation.validate_password(password2)

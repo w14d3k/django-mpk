@@ -71,6 +71,9 @@ class User(AbstractBaseUser):
     def __str__(self):
         return self.email
     
+    def get_id(self):
+        return self.id
+    
     def get_first_name(self):
         return self.first_name
     
@@ -98,3 +101,16 @@ class User(AbstractBaseUser):
     def is_active(self):
         return self.active
     
+class TicketsList(models.Model):
+    type = models.CharField(max_length=255)
+    days_quantity = models.SmallIntegerField()
+    lines = models.CharField(max_length=255)
+    price = models.FloatField()
+    REQUIRED_FIELDS = ['type', 'days_quantity', 'lines', 'price']
+        
+        
+class UserPurchasediTcketsList(models.Model):
+    user_id = models.DecimalField
+    valid_until = models.DateField
+
+        

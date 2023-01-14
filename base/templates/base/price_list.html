@@ -20,21 +20,23 @@
       </thead>
       <tbody>
         <!-- row 1 -->
+        {% for ticket in tickets_list %}
         <tr>
-          <td>Imienny</td>
-          <td>150 dni</td>
-          <td>Jedna linia(wskaż w następnym kroku)</td>
-          <th>000.00 PLN</th>
+          <td>{{ ticket.type }}</td>
+          <td>{{ ticket.days_quantity }} dni</td>
+          <td>{{ ticket.lines }}</td>
+          <th>{{ ticket.price }} PLN</th>
         </tr>
+        {% endfor %}
         <!-- end of row 1 -->
         <!-- row 2 -->
-        <tr>
+        {% comment %} <tr>
           <td>Okaziciel</td>
           <td>15 dni</td>
           <td>Wszystkie linie</td>
           <th>69.42 PLN</th>
         </tr>
-        <!-- end of row 2 -->
+        <!-- end of row 2 --> {% endcomment %}
       </tbody>
     </table>
   </div>

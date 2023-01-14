@@ -3,6 +3,7 @@ from django.contrib.auth import (authenticate, get_user_model, login, logout)
 from django.shortcuts import redirect, render
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth.decorators import login_required
+from .models import TicketsList, UserPurchasediTcketsList
 
 
 def home(request):
@@ -47,6 +48,16 @@ def logout_user(request):
     return redirect('/')
 
 
+@login_required(login_url='/')
+def profile(request):
+    return render(request, 'base/profile.html')
+
+
+@login_required(login_url='/')
+def settings(request):
+   return render(request, 'base/settings.html') 
+
+
 def admin_dashboard(request):
     return redirect('/admin')
 
@@ -55,18 +66,21 @@ def sales_statistics(request):
     return redirect('/admin')
 
 
-@login_required(login_url='/')
-def profile(request):
-    return render(request, 'base/profile.html')
-
-
 def price_list(request):
-    return render(request, 'base/price_list.html')
+    tickets_list = TicketsList.objects.all()
+    context = {
+        "tickets_list": tickets_list,
+    }
+    return render(request, 'base/price_list.html', context)
 
 
 @login_required(login_url='/')
 def store(request):
-    return render(request, 'base/store.html')
+    tickets_list = TicketsList.objects.all()
+    context = {
+        "tickets_list": tickets_list,
+    }
+    return render(request, 'base/store.html', context)
 
 
 def contact(request):

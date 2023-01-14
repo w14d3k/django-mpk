@@ -1,7 +1,12 @@
-{% extends 'main.html' %} {% block title %}
-<title>Sklep | ZTM Lublin | Portal obsługi klienta</title>
-{% endblock %} {% block content %}
+{% extends 'main.html' %}
 
+{% load widget_tweaks %} 
+
+{% block title %}
+<title>Sklep | ZTM Lublin | Portal obsługi klienta</title>
+{% endblock %} 
+
+{% block content %}
 <!-- SUCCESS PURCHASE ALERT -->
 
 <div class="alert alert-success shadow-lg hidden" id="successAlert">
@@ -15,39 +20,29 @@
 
 <!-- MODALS FOR TICKETS -->
 <!-- Modal for ticket 1 -->
-<input type="checkbox" id="ticket-0" class="modal-toggle" />
+
+<input type="checkbox" id="ticket" class="modal-toggle" />
 <div class="modal">
   <div class="modal-box text-xl">
-    <label for="ticket-0" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <label for="ticket" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
     <h3 class="font-bold text-lg">Potwierdź zakup biletu</h3>
-    <p class="py-4">Rodzaj: Imienny</p>
-    <p class="py-4">Ilość dni: 150 dni</p>
+    <p class="py-4">Rodzaj: </p>
+    <p class="py-4">Ilość dni: </p>
     <p class="py-4">Ważny do: 09.06.2023</p>
     <p class="py-4">Linia: <input type="text" placeholder="Podaj jedną linię" class="input input-bordered input-primary w-full input-md w-1/2 max-w-xs" />
     </p> <!-- если билет на одну линию то тут будет поле для ввода, если на все - надпись "Wszystkie" -->
-    <p class="py-4">Cena: 000.00 PLN</p>
+    <p class="py-4">Cena:  PLN</p>
     <div class="modal-action">
-      <label for="ticket-0" class="btn btn-active btn-accent" onClick="showSuccessAllert()">Kupuję</label>
+      <label for="ticket" class="btn btn-active btn-accent" onClick="showSuccessAllert()">Kupuję</label>
     </div>
   </div>
 </div>
+
 <!-- End of Modal for ticket 1 -->
 <!-- Modal for ticket 2 -->
-<input type="checkbox" id="ticket-1" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box text-xl">
-    <label for="ticket-1" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="font-bold text-lg">Potwierdź zakup biletu</h3>
-    <p class="py-4">Rodzaj: Imienny</p>
-    <p class="py-4">Ilość dni: 15 dni</p>
-    <p class="py-4">Ważny do: 05.12.2022</p>
-    <p class="py-4">Linie: Wszystkie</p>
-    <p class="py-4">Cena: 69.42 PLN</p>
-    <div class="modal-action">
-      <label for="ticket-1" class="btn btn-active btn-accent" onClick="showSuccessAllert()">Kupuję</label>
-    </div>
-  </div>
-</div>
+
+
+
 <!-- End of Modal for ticket 2 -->
 <!-- END OF ALL MODALS FOR TICKETS -->
 
@@ -67,27 +62,18 @@
       </thead>
       <tbody>
         <!-- row 1 -->
+        {% for ticket in tickets_list %}
         <tr>
-          <td>Imienny</td>
-          <td>150 dni</td>
-          <td>Jedna linia(wskaż w następnym kroku)</td>
-          <th>000.00 PLN</th>
+          <td>{{ ticket.type }}</td>
+          <td>{{ ticket.days_quantity }} dni</td>
+          <td>{{ ticket.lines }}</td>
+          <th>{{ ticket.price }} PLN</th>
           <th>
-            <label class="btn btn-active btn-accent" for="ticket-0">KUP</label>
+            <label class="btn btn-active btn-accent" for="ticket">KUP</label>
           </th>
         </tr>
+        {% endfor %}
         <!-- end of row 1 -->
-        <!-- row 2 -->
-        <tr>
-          <td>Okaziciel</td>
-          <td>15 dni</td>
-          <td>Wszystkie linie</td>
-          <th>69.42 PLN</th>
-          <th>
-            <label class="btn btn-active btn-accent" for="ticket-1">KUP</label>
-          </th>
-        </tr>
-        <!-- end of row 2 -->
       </tbody>
     </table>
   </div>

@@ -4,7 +4,7 @@ from .import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('admin/', views.admin_dashboard, name="admin_dashboard"),
-    path('sales_statistics/', views.sales_statistics, name="sales_statistics"),
+    path('sales_stats/', views.sales_stats, name="sales_stats"),
     path('registration/', views.register_user, name="registration"),
     path('login/', views.login_user, name="login"),
     path('profile/', views.profile, name="profile"),

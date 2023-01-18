@@ -1,0 +1,64 @@
+{% extends 'main.html' %} {% block title %}
+<title>Statystyki sprzedaży | ZTM Lublin | Portal obsługi klienta</title>
+{% endblock %} {% block content %}
+<!-- таблица: айди транзакции, тип билета, дата покупки, айди юзверя, цена -->
+
+<div class="flex items-center justify-around mx-64">
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <figure><img src="https://placeimg.com/400/225/arch" /></figure>
+    <div class="card-body">
+      <h2 class="card-title">Ilość sprzedanych biletów:<div class="badge badge-secondary">+999  </div></h2>
+      <p>13412<br>w okresie z 01.01.2023 do 18.01.2023</p>
+    </div>
+  </div>
+
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <figure><img src="https://placeimg.com/400/225/arch" /></figure>
+    <div class="card-body">
+      <h2 class="card-title">Najbradziej populrany bilet:</h2>
+      <p>150 Dni, Imienny, Wszystkie linie</p>
+      <div class="card-actions justify-end">
+        <div class="badge badge-outline">ID: #2137</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <figure><img src="https://placeimg.com/400/225/arch" /></figure>
+    <div class="card-body">
+      <h2 class="card-title">Użytkownik miesiąca:</h2>
+      <p>Joe Biden <br> 234 bilety kupiono <br> na kwotę: 21314 PLN </p>
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-center">
+    <div class="overflow-x-auto w-1/2">
+      <table class="table w-full text-xl">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>ID Transakcji</th>
+            <th>Bilet</th>
+            <th>Data</th>
+            <th>Cena</th>
+            <th>Użytkownik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- row 1 -->
+          {% for ticket in tickets_list %}
+          <tr>
+            <td>{{ ticket.trans_id }}</td>
+            <td>{{ ticket.name }} dni</td>
+            <td>{{ ticket.date }}</td>
+            <th>{{ ticket.price }} PLN</th>
+            <th>{{ ticket.user }}</th>
+          </tr>
+          {% endfor %}
+          <!-- end of row 1 -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

@@ -58,13 +58,14 @@ def profile(request):
 def settings(request):
    return render(request, 'base/settings.html') 
 
+@login_required(login_url='/')
+def sales_stats(request):
+   return render(request, 'base/sales_stats.html') 
+
 
 def admin_dashboard(request):
     return redirect('/admin')
 
-
-def sales_statistics(request):
-    return redirect('/admin')
 
 
 def price_list(request):
@@ -95,6 +96,10 @@ def contact(request):
 
 def terms(request):
     return render(request, 'base/terms.html')
+
+
+def sales_stats(request):
+    return render(request, 'base/sales_stats.html')
 
 
 def gdpr(request):

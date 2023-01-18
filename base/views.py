@@ -80,17 +80,12 @@ def store(request):
     tickets_list = TicketsList.objects.all()
     user_purchased_tickets_list = UserPurchasediTcketsList()
     ticket_purchase_form = TicketPurchaseForm()
-    ticket_id = TicketsList.get_id()
-    user_email = User.get_email()
     context = {
         "tickets_list": tickets_list,
         "user_purchased_tickets_list": user_purchased_tickets_list,
         "ticket_purchase_form": ticket_purchase_form,
     }
-    if request.method == 'POST':
-        if ticket_purchase_form.is_valid():
-            ticket_purchase_form
-            ticket_purchase_form.save()
+    
     return render(request, 'base/store.html', context)
 
 

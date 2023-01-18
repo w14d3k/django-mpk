@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
-
+import datetime
 
 class UserManager(BaseUserManager):
     
@@ -59,6 +59,7 @@ class User(AbstractBaseUser):
     last_name = models.CharField(max_length=255, null=True)
     email = models.EmailField(max_length=255, unique=True)
     pesel = models.CharField(unique=True, max_length=11, null=True)
+    funds = models.IntegerField(default=0)
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
@@ -79,6 +80,12 @@ class User(AbstractBaseUser):
     
     def get_last_name(self):
         return self.last_name
+    
+    def get_email(self):
+        return self.email
+    
+    def get_funds(self):
+        return self.funds
     
     def get_pesel(self):
         return self.pesel
@@ -107,10 +114,35 @@ class TicketsList(models.Model):
     lines = models.CharField(max_length=255)
     price = models.FloatField()
     REQUIRED_FIELDS = ['type', 'days_quantity', 'lines', 'price']
+    
+    def get_id(self):
+       return self.id
+    
+    def get_type(self):
+       return self.type
+   
+    def get_days_quantity(self):
+       return self.days_quantity
+   
+    def get_lines(self):
+       return self.lines 
+    
+    def get_days_quantity(self):
+       return self.days_quantity
         
         
 class UserPurchasediTcketsList(models.Model):
-    user_id = models.DecimalField
-    valid_until = models.DateField
+    user_id = models.IntegerField
+    ticket_id = models.ImageField
+    lines = models.CharField(max_length=255, default="")
+    valid_until = models.DateField(default=datetime.date.today)
+    
+    @property
+    def get_lines(self):
+        return self.lines
+    
+    @property
+    def get_valid_until(self):
+        return self.valid_until
 
         

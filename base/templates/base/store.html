@@ -19,32 +19,32 @@
 <!-- END OF SUCCESS PURCHASE ALERT -->
 
 <!-- MODALS FOR TICKETS -->
-<!-- Modal for ticket 1 -->
-
-<input type="checkbox" id="ticket" class="modal-toggle" />
+<!-- Modal for tickets -->
+<form method="post">
+{% csrf_token %}
+{% for ticket in tickets_list %}
+<input type="checkbox" id="ticket-{{ticket.id}}" class="modal-toggle" />
 <div class="modal">
   <div class="modal-box text-xl">
-    <label for="ticket" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <label for="ticket-{{ticket.id}}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
     <h3 class="font-bold text-lg">Potwierdź zakup biletu</h3>
-    <p class="py-4">Rodzaj: </p>
-    <p class="py-4">Ilość dni: </p>
+    <p class="py-4">Rodzaj: {{ ticket.type }}</p>
+    <p class="py-4">Ilość dni: {{ ticket.days_quantity }}</p>
     <p class="py-4">Ważny do: 09.06.2023</p>
-    <p class="py-4">Linia: <input type="text" placeholder="Podaj jedną linię" class="input input-bordered input-primary w-full input-md w-1/2 max-w-xs" />
-    </p> <!-- если билет на одну линию то тут будет поле для ввода, если на все - надпись "Wszystkie" -->
-    <p class="py-4">Cena:  PLN</p>
+    {% if ticket.get_lines != "Wszystkie linie" %}  
+    <p class="py-4">Linia: {% render_field ticket_purchase_form.lines class="input input-bordered input-primary w-full input-md w-1/2 max-w-xs" placeholder="Podaj jedną linię" %}</p>
+    {% else %}
+      <p class="py-4">Linie: {{ticket.lines}}</p>
+    {% endif %} 
+    <p class="py-4">Cena: {{ ticket.price }} PLN</p>
     <div class="modal-action">
-      <label for="ticket" class="btn btn-active btn-accent" onClick="showSuccessAllert()">Kupuję</label>
+      <label for="ticket{{ticket.id}}" class="btn btn-active btn-accent" onClick="showSuccessAllert()">Kupuję</label>
     </div>
   </div>
 </div>
-
-<!-- End of Modal for ticket 1 -->
-<!-- Modal for ticket 2 -->
-
-
-
-<!-- End of Modal for ticket 2 -->
-<!-- END OF ALL MODALS FOR TICKETS -->
+</form>
+{% endfor %}
+<!-- End of Modal for tickets -->
 
 <!-- PAGE CONTENT -->
 <div class="flex justify-center">
@@ -69,7 +69,7 @@
           <td>{{ ticket.lines }}</td>
           <th>{{ ticket.price }} PLN</th>
           <th>
-            <label class="btn btn-active btn-accent" for="ticket">KUP</label>
+            <label class="btn btn-active btn-accent" for="ticket-{{ticket.id}}">KUP</label>
           </th>
         </tr>
         {% endfor %}

@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model, password_validation
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
+from .models import UserPurchasediTcketsList
+import datetime
 
 
 User = get_user_model()
@@ -99,4 +101,13 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+    
+class TicketPurchaseForm(forms.ModelForm):
+    
+    lines = forms.CharField(max_length=255, widget=forms.TextInput)
+    
+    class Meta:
+        model = UserPurchasediTcketsList
+        fields = ( 'lines',)
+
     

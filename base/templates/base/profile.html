@@ -30,6 +30,8 @@
                 Użytkownik 
                 {% endif %}
               </div>
+              <div class="text-base-content/70 my-3 text-xl">Dostępne środki: {{user.get_funds}} PLN</div>
+              {% comment %} <a role="button" href="" class="btn">Doładuj konto</a> {% endcomment %}
               <div class="text-base-content/70 my-3 text-xl">Email: {{ user.email}}</div>
               <div class="text-base-content/70 my-3 text-xl">PESEL: {{ user.get_pesel}}</div>
             </div>
